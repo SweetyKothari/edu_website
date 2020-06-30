@@ -4,17 +4,14 @@
    .navbar-light .navbar-nav .nav-link{
     color: #0b0a0a;
    }
-   .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 1rem;
-    padding-left: 1rem;
-}
+
 
 </style>
 
 <header id="header" class="fixed-top">
     <div class="container align-items-center">
  <!-- .nav-menu -->
- <nav class="navbar navbar-expand-lg navbar-light">
+ <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
@@ -25,6 +22,7 @@
              <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
              <a class="nav-item nav-link colorblack" href="about.html">About</a>
              <a class="nav-item nav-link" href="courses.html">Sessions</a>
+             <a class="nav-item nav-link" href="trainers.html">Teachers</a>
              <div class="nav-item dropdown drop-down">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Register
@@ -36,7 +34,7 @@
              </div>
              <a class="nav-item nav-link" href="contact.html">Contact</a>         
         </div>
-        <form class="form-inline" action="/courses.html" method="GET" >
+         <form class="form-inline" action="courses.html" method="GET" >
             <input class="form-control mr-sm-2" type="search" placeholder="Search" list='video-data' id="searchInput"  name="search" autocomplete="off" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
          </form>
