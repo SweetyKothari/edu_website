@@ -34,7 +34,7 @@
              </div>
              <a class="nav-item nav-link" href="contact.html">Contact</a>         
         </div>
-         <form class="form-inline" action="courses.html" method="GET" >
+         <form class="form-inline" action="courses.html" method="GET" id="searchForm">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" list='video-data' id="searchInput"  name="search" autocomplete="off" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
          </form>
@@ -58,8 +58,11 @@
             let text = $(this)[0].value.toLowerCase().trim()
             if(!text)
                 return
-            let newHtml = titles.filter(t=> t.indexOf(text)>-1).map(t=>'<option value="'+t+'"/>').join('')
-            $('#video-data').html(newHtml) 
+            let optionArr = titles.filter(t=> t.indexOf(text)>-1).map(t=> ({ 'html': '<option value="'+t+'"/>','value': t}))
+            if(optionArr.length==1 && optionArr[0].value == text)
+                $('#searchForm').submit()
+
+            $('#video-data').html(optionArr.map(s=>s.html).join('')) 
         })
     });
 
@@ -85,8 +88,7 @@
              
              $.each(data.items, function(index, item) {
               if(item.snippet.resourceId.kind == 'youtube#video'){
-              titles.push(item.snippet.title)
-              }
+                titles.push(item.snippet.title.toLowerCase())              }
 
               });
 
@@ -98,6 +100,9 @@
 
     
     function getEndingUrl(url) {
-        return url.split('/').filter(it=> it.search(".html")>-1).map(it=>it.replace(/\?.*/,''))[0].trim()
+        let ending = url.split('/').filter(it=> it.search(".html")>-1).map(it=>it.replace(/\?.*/,''))
+        if(ending.length==0)
+            return 'index.html'
+        else return ending[0].trim();
     }
 </script>

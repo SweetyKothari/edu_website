@@ -115,13 +115,10 @@
               if(window.location.search){
                 let params = (new URL(document.location)).searchParams;
                 let text = params.get("search")
-                console.log('input: '+text)
                 let c = $('[data-text]')
                 $(c).each(function (index, value){ 
                   let elem = $(value)
                   if(elem.attr('data-text').toLowerCase().indexOf(text)==-1){
-                    console.log(elem.attr('data-text'))
-                    console.log('matched')
                     elem.detach()
                   }
                   
